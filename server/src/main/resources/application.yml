@@ -1,0 +1,15 @@
+#使用哪个环境的配置
+server:
+  port: 8081
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+spring:
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /jsp/
+license:
+  path: ${user.dir}/tmp/license.lic
+debug: true

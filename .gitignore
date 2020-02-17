@@ -1,0 +1,7 @@
+/*/target/*
+/.idea/*
+*.iml
+/logs/*
+/server/logs/*
+/server/.mvn/**
+
