@@ -5,3 +5,4 @@
 /server/logs/*
 /server/.mvn/**
 
+*.gitignore
