@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传页面</title>
+</head>
+<body>
+<div style="width: 500px;height: 300px;margin-top: 100px;margin-left: auto;margin-right: auto;">
+    <i style="FONT-SIZE:5PX;COLOR:red">请提供一下证书码给系统管理员已获取证书。</i>
+    <p th:text="${serverInfo}"
+       style="FONT-SIZE:5PX;BACKGROUND-COLOR:grey;MARGIN:0;COLOR:white;PADDING:5PX;MARGIN-BOTTOM:10PX;"></p>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file"><br>
+        <input style="margin-top: 20px;" type="submit" value="上传">
+    </form>
+</div>
+</body>
+</html>

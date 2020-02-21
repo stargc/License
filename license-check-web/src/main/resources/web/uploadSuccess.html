@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>上传成功</title>
+</head>
+<body>
+<div style="width: 500px;height: 300px;margin-top: 100px;margin-left: auto;margin-right: auto;">
+    <div th:if="${fileName}">
+        <h2 th:text="|文件 ${fileName} ${fileMsg} |"></h2>
+    </div>
+</div>
+</body>
+</html>

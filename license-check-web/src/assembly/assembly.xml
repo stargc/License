@@ -2,40 +2,34 @@
 		  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		  xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2
 	http://maven.apache.org/xsd/assembly-1.1.2.xsd">
-    <id>package</id>
-    <formats>
-        <format>tar.gz</format>
-    </formats>
-    <fileSets>
+	<id>package</id>
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+	<includeBaseDirectory>true</includeBaseDirectory>
+	<fileSets>
 		<fileSet>
-			<directory>src/main/resources/</directory>
-			<includes>
-				<include>*.*</include>
-			</includes>
+			<directory>src/main/resources/config</directory>
 			<outputDirectory>config</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>src/main/webapp</directory>
-			<outputDirectory>src/main/webapp</outputDirectory>
-		</fileSet>
-		<fileSet>
 			<directory>src/bin</directory>
-			<fileMode>755</fileMode>
 			<outputDirectory>bin</outputDirectory>
+			<fileMode>755</fileMode>
 		</fileSet>
 		<fileSet>
 			<directory>src/pids</directory>
 			<outputDirectory>pids</outputDirectory>
 		</fileSet>
-		<fileSet>
-			<directory>tmp</directory>
-			<outputDirectory>tmp</outputDirectory>
-		</fileSet>
 	</fileSets>
-    <dependencySets>
-        <dependencySet>
-            <outputDirectory>lib</outputDirectory>
-            <scope>runtime</scope>
-        </dependencySet>
-    </dependencySets>
+	<files>
+		<file>
+			<source>${project.build.directory}/${project.build.finalName}.${project.packaging}</source>
+			<outputDirectory></outputDirectory>
+		</file>
+	</files>
+	<dependencySets>
+		<!-- <dependencySet> <outputDirectory>lib</outputDirectory> <scope>runtime</scope> 
+			</dependencySet> -->
+	</dependencySets>
 </assembly>
