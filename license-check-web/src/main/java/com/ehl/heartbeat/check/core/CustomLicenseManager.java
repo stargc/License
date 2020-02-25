@@ -1,6 +1,6 @@
-package com.ehl.license.check.core;
+package com.ehl.heartbeat.check.core;
 
-import com.ehl.license.check.tool.ServerInfoUtil;
+import com.ehl.heartbeat.check.tool.ServerInfoUtil;
 import de.schlichtherle.license.*;
 import de.schlichtherle.xml.GenericCertificate;
 import org.springframework.util.Assert;
@@ -9,7 +9,6 @@ import java.beans.XMLDecoder;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.Calendar;
 import java.util.Date;
 
 

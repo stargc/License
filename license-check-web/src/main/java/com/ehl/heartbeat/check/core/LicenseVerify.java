@@ -1,6 +1,6 @@
-package com.ehl.license.check.core;
+package com.ehl.heartbeat.check.core;
 
-import com.ehl.license.check.tool.InputStreamUtil;
+import com.ehl.heartbeat.check.tool.InputStreamUtil;
 import de.schlichtherle.license.*;
 import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ import java.util.prefs.Preferences;
 
 
 @Component
-@Log4j2
+@Slf4j
 public class LicenseVerify {
 
     @Value("${license.subject}")

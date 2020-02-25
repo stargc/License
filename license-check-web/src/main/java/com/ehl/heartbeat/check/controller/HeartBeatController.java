@@ -1,19 +1,23 @@
-package com.ehl.license.check.controller;
+package com.ehl.heartbeat.check.controller;
 
-import com.ehl.license.check.core.LicenseVerify;
-import com.ehl.license.check.entity.LicenseCheckResp;
-import com.ehl.license.check.tool.LicenseStore;
-import lombok.extern.log4j.Log4j2;
+import com.ehl.heartbeat.check.core.LicenseVerify;
+import com.ehl.heartbeat.check.entity.LicenseCheckResp;
+import com.ehl.heartbeat.check.tool.LicenseStore;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author created by guanchen on 2020/2/18 16:16
  */
 @RestController
-@Log4j2
+@Slf4j
 @CrossOrigin
-public class LicenseController {
+public class HeartBeatController {
 
     @Autowired
     private LicenseVerify licenseVerify;
@@ -23,7 +27,7 @@ public class LicenseController {
         try {
             System.out.println(licenseVerify.getAfterDays());
         } catch (Exception e) {
-            log.error(e);
+            log.error(ExceptionUtils.getStackTrace(e));
         }
         return LicenseStore.getInstance().getCheckResp();
     }

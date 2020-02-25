@@ -1,6 +1,6 @@
-package com.ehl.license.check.core;
+package com.ehl.heartbeat.check.core;
 
-import com.ehl.license.check.tool.InputStreamUtil;
+import com.ehl.heartbeat.check.tool.InputStreamUtil;
 
 import java.io.InputStream;
 

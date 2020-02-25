@@ -1,5 +1,6 @@
-package com.ehl.license.check.controller;
+package com.ehl.heartbeat.check.controller;
 
+import com.ehl.heartbeat.check.tool.ServerInfoUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import com.ehl.license.check.tool.ServerInfoUtil;
 
 import java.io.File;
 
@@ -23,7 +23,7 @@ public class UploadFileController {
 
     @RequestMapping("/uploadFile")
     public String  setLicense(Model model) {
-        model.addAttribute("serverInfo",ServerInfoUtil.getServerInfo());
+        model.addAttribute("serverInfo", ServerInfoUtil.getServerInfo());
         return "uploadFile";
     }
 

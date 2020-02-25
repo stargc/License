@@ -1,4 +1,4 @@
-package com.ehl.license.check.core;
+package com.ehl.heartbeat.check.core;
 
 import de.schlichtherle.license.LicenseManager;
 import de.schlichtherle.license.LicenseParam;

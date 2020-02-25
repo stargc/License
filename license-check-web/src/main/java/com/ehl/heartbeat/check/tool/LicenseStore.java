@@ -1,6 +1,6 @@
-package com.ehl.license.check.tool;
+package com.ehl.heartbeat.check.tool;
 
-import com.ehl.license.check.entity.LicenseCheckResp;
+import com.ehl.heartbeat.check.entity.LicenseCheckResp;
 
 /**
  * @author created by guanchen on 2020/2/20 14:54

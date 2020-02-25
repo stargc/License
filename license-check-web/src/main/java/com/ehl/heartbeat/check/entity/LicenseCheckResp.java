@@ -1,4 +1,4 @@
-package com.ehl.license.check.entity;
+package com.ehl.heartbeat.check.entity;
 
 import lombok.Data;
 

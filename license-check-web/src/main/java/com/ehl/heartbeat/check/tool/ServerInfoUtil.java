@@ -1,9 +1,9 @@
-package com.ehl.license.check.tool;
+package com.ehl.heartbeat.check.tool;
 
 
-import com.ehl.license.check.core.AbstractServerInfos;
-import com.ehl.license.check.core.LinuxServerInfos;
-import com.ehl.license.check.core.WindowsServerInfos;
+import com.ehl.heartbeat.check.core.AbstractServerInfos;
+import com.ehl.heartbeat.check.core.LinuxServerInfos;
+import com.ehl.heartbeat.check.core.WindowsServerInfos;
 
 import java.security.MessageDigest;
 

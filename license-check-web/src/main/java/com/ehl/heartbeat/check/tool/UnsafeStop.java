@@ -1,4 +1,4 @@
-package com.ehl.license.check.tool;
+package com.ehl.heartbeat.check.tool;
 
 import sun.misc.Unsafe;
 
