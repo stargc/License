@@ -1,6 +1,6 @@
-package com.ehl.heartbeat.check.controller;
+package com.ehl.heartbeat.controller;
 
-import com.ehl.heartbeat.check.tool.ServerInfoUtil;
+import com.ehl.heartbeat.tool.ServerInfoUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

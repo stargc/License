@@ -1,4 +1,4 @@
-package com.ehl.heartbeat.check.tool;
+package com.ehl.heartbeat.tool;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

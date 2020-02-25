@@ -1,4 +1,4 @@
-package com.ehl.heartbeat.check.entity;
+package com.ehl.heartbeat.entity;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import lombok.Data;
  * @author created by guanchen on 2020/2/19 10:14
  */
 @Data
-public class LicenseCheckResp {
+public class HeartBeatCheckResp {
     private int code;
     private String msg;
     //距离不许使用还有多久期满

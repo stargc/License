@@ -1,4 +1,4 @@
-package com.ehl.heartbeat.check.tool;
+package com.ehl.heartbeat.tool;
 
 public class StringUtils {
     public static boolean isNotBlank(String string){

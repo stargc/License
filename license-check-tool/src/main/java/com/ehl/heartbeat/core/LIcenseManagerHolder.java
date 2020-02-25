@@ -1,4 +1,4 @@
-package com.ehl.heartbeat.check.core;
+package com.ehl.heartbeat.core;
 
 import de.schlichtherle.license.LicenseManager;
 import de.schlichtherle.license.LicenseParam;
@@ -6,13 +6,13 @@ import de.schlichtherle.license.LicenseParam;
 /**
  * de.schlichtherle.license.LicenseManager的单例
  */
-public class LicenseManagerHolder {
+public class LIcenseManagerHolder {
 
     private static volatile LicenseManager LICENSE_MANAGER;
 
     public static LicenseManager getInstance(LicenseParam param){
         if(LICENSE_MANAGER == null){
-            synchronized (LicenseManagerHolder.class){
+            synchronized (LIcenseManagerHolder.class){
                 if(LICENSE_MANAGER == null){
                     LICENSE_MANAGER = new CustomLicenseManager(param);
                 }

@@ -1,8 +1,11 @@
-package com.ehl.heartbeat.check.core;
+package com.ehl.heartbeat.service;
 
-import com.ehl.heartbeat.check.tool.InputStreamUtil;
+import com.ehl.heartbeat.support.CustomKeyStoreParam;
+import com.ehl.heartbeat.support.CustomHeartBeatManager;
+import com.ehl.heartbeat.support.HeartBeatManagerHolder;
+import com.ehl.heartbeat.support.HeartBeatVerifyParam;
+import com.ehl.heartbeat.tool.InputStreamUtil;
 import de.schlichtherle.license.*;
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +19,7 @@ import java.util.prefs.Preferences;
 
 @Component
 @Slf4j
-public class LicenseVerify {
+public class HeartBeatService {
 
     @Value("${license.subject}")
     private String licenseSubject;
@@ -31,8 +34,8 @@ public class LicenseVerify {
     private String licenseFileName;
 
     public void doInstall() throws Exception {
-        ClassLoader classLoader = LicenseVerify.class.getClassLoader();
-        LicenseVerifyParam param = new LicenseVerifyParam();
+        ClassLoader classLoader = HeartBeatService.class.getClassLoader();
+        HeartBeatVerifyParam param = new HeartBeatVerifyParam();
         param.setSubject(licenseSubject);
         param.setPublicAlias(licensePublicAlias);
         param.setStorePass(licenseStorePass);
@@ -43,16 +46,13 @@ public class LicenseVerify {
             throw new LicenseContentException("请先获取证书");
         }
         param.setLicenseFile(InputStreamUtil.streamToByte(inputStream));
-        CustomLicenseManager licenseManager = (CustomLicenseManager) LicenseManagerHolder.getInstance(initLicenseParam(param));
+        CustomHeartBeatManager licenseManager = (CustomHeartBeatManager) HeartBeatManagerHolder.getInstance(initLicenseParam(param));
         licenseManager.uninstall();
         licenseManager.install(param.getLicenseFile());
     }
 
-    /**
-     * 校验License证书
-     */
     public boolean verify() {
-        LicenseManager licenseManager = LicenseManagerHolder.getInstance(null);
+        LicenseManager licenseManager = HeartBeatManagerHolder.getInstance(null);
         try {
             licenseManager.verify();
             return true;
@@ -63,7 +63,7 @@ public class LicenseVerify {
     }
 
     public int getAfterDays() throws Exception{
-        CustomLicenseManager licenseManager = (CustomLicenseManager) LicenseManagerHolder.getInstance(null);
+        CustomHeartBeatManager licenseManager = (CustomHeartBeatManager) HeartBeatManagerHolder.getInstance(null);
         int days = licenseManager.getAfterDays();
         Assert.isTrue(days > 0,"证书已过期认证失败");
         return days;
@@ -72,12 +72,12 @@ public class LicenseVerify {
     /**
      * 初始化证书生成参数
      */
-    private LicenseParam initLicenseParam(LicenseVerifyParam param) {
-        Preferences preferences = Preferences.userNodeForPackage(LicenseVerify.class);
+    private LicenseParam initLicenseParam(HeartBeatVerifyParam param) {
+        Preferences preferences = Preferences.userNodeForPackage(HeartBeatService.class);
 
         CipherParam cipherParam = new DefaultCipherParam(param.getStorePass());
 
-        KeyStoreParam publicStoreParam = new CustomKeyStoreParam(LicenseVerify.class
+        KeyStoreParam publicStoreParam = new CustomKeyStoreParam(HeartBeatService.class
                 , param.getPublicKeysStoreFile()
                 , param.getPublicAlias()
                 , param.getStorePass()

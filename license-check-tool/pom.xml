@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ehl.heartbeat</groupId>
+    <artifactId>heartbeat-check-tool</artifactId>
+    <version>1.2</version>
+    <name>heartbeat-check-tool</name>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.schlichtherle.truelicense</groupId>
+            <artifactId>truelicense-core</artifactId>
+            <version>1.33</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.2.3.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- ProGuard混淆插件-->
+            <plugin>
+                <groupId>com.github.wvengen</groupId>
+                <artifactId>proguard-maven-plugin</artifactId>
+                <version>2.0.11</version>
+                <executions>
+                    <execution>
+                        <!-- 混淆时刻，这里是打包的时候混淆-->
+                        <phase>package</phase>
+                        <goals>
+                            <!-- 使用插件的什么功能，当然是混淆-->
+                            <goal>proguard</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- 是否将生成的PG文件安装部署-->
+                    <attach>true</attach>
+                    <!-- 是否混淆-->
+                    <obfuscate>true</obfuscate>
+                    <!-- 指定生成文件分类 -->
+                    <attachArtifactClassifier>pg</attachArtifactClassifier>
+                    <includeDependency>true</includeDependency>
+                    <options>
+                        <!-- JDK目标版本1.8-->
+                        <option>-target 1.8</option>
+                        <!-- 不做收缩（删除注释、未被引用代码）-->
+                        <!--<option>-dontshrink</option>-->
+                        <!-- 不做优化（变更代码实现逻辑）-->
+                        <option>-dontoptimize</option>
+                        <!-- 不路过非公用类文件及成员-->
+                        <option>-dontskipnonpubliclibraryclasses</option>
+                        <option>-dontskipnonpubliclibraryclassmembers</option>
+                        <!--不用大小写混合类名机制-->
+                        <option>-dontusemixedcaseclassnames</option>
+
+                        <!-- 优化时允许访问并修改有修饰符的类和类的成员 -->
+                        <option>-allowaccessmodification</option>
+                        <!-- 确定统一的混淆类的成员名称来增加混淆-->
+                        <option>-useuniqueclassmembernames</option>
+                        <!-- 不混淆所有包名-->
+                        <option>-keeppackagenames</option>
+
+                        <!-- 需要保持的属性：异常，注解等-->
+                        <!--<option>-keepattributes Exceptions,InnerClasses,Signature,Deprecated,SourceFile,LocalVariable*Table,*Annotation*,Synthetic,EnclosingMethod</option>-->
+                        <option>-keep class com.Info {*;}</option>
+                        <option>-keep class com.Main {*;}</option>
+                        <!--<option>-keep class * implements java.io.Serializable</option>-->
+                        <option>-keep class org.apache.** {*;}</option>
+                        <option>-keep class de.schlichtherle.** {*;}</option>
+                        <option>-keep class com.ehl.heartbeat.support.** {*;}</option>
+                        <option>-keep class com.ehl.heartbeat.tool.** {*;}</option>
+
+                    </options>
+                    <!-- 添加依赖，这里你可以按你的需要修改，这里测试只需要一个JRE的Runtime包就行了 -->
+                    <libs>
+                        <lib>${java.home}/lib/rt.jar</lib>
+                        <lib>${java.home}/lib/jce.jar</lib>
+                    </libs>
+                    <!-- 输出目录-->
+                    <outputDirectory>${project.build.directory}/</outputDirectory>
+                    <outjar>heartbeat-check-tool-1.2.jar</outjar>
+                    <assembly>
+                        <inclusions>
+                            <inclusion>
+                                <groupId>de.schlichtherle.truelicense</groupId>
+                                <artifactId>truelicense-core</artifactId>
+                            </inclusion>
+                            <inclusion>
+                                <groupId>de.schlichtherle.truelicense</groupId>
+                                <artifactId>truelicense-xml</artifactId>
+                            </inclusion>
+                            <inclusion>
+                                <groupId>commons-codec</groupId>
+                                <artifactId>commons-codec</artifactId>
+                            </inclusion>
+                        </inclusions>
+                    </assembly>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

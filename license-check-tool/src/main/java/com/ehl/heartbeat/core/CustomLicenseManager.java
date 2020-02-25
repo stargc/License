@@ -1,6 +1,6 @@
-package com.ehl.heartbeat.check.core;
+package com.ehl.heartbeat.core;
 
-import com.ehl.heartbeat.check.tool.ServerInfoUtil;
+import com.ehl.heartbeat.tool.ServerInfoUtil;
 import de.schlichtherle.license.*;
 import de.schlichtherle.xml.GenericCertificate;
 import org.springframework.util.Assert;
@@ -22,7 +22,7 @@ public class CustomLicenseManager extends LicenseManager {
     //默认BUFSIZE
     private static final int DEFAULT_BUFSIZE = 8 * 1024;
 
-    CustomLicenseManager(LicenseParam param) {
+    public CustomLicenseManager(LicenseParam param) {
         super(param);
     }
 

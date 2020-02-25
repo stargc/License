@@ -1,4 +1,4 @@
-package com.ehl.heartbeat.check.core;
+package com.ehl.heartbeat.core;
 
 
 import java.net.InetAddress;

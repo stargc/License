@@ -1,9 +1,9 @@
-package com.ehl.heartbeat.check.tool;
+package com.ehl.heartbeat.tool;
 
 
-import com.ehl.heartbeat.check.core.AbstractServerInfos;
-import com.ehl.heartbeat.check.core.LinuxServerInfos;
-import com.ehl.heartbeat.check.core.WindowsServerInfos;
+import com.ehl.heartbeat.core.AbstractServerInfos;
+import com.ehl.heartbeat.core.LinuxServerInfos;
+import com.ehl.heartbeat.core.WindowsServerInfos;
 
 import java.security.MessageDigest;
 

@@ -1,4 +1,4 @@
-package com.ehl.heartbeat.check;
+package com.ehl.heartbeat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

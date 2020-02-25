@@ -1,6 +1,6 @@
-package com.ehl.heartbeat.check.core;
+package com.ehl.heartbeat.support;
 
-import com.ehl.heartbeat.check.tool.InputStreamUtil;
+import com.ehl.heartbeat.tool.InputStreamUtil;
 
 import java.io.InputStream;
 
@@ -8,7 +8,7 @@ import java.io.InputStream;
  * License校验类需要的参数
  *
  */
-public class LicenseVerifyParam {
+public class HeartBeatVerifyParam {
 
     /**
      * 证书subject
@@ -35,11 +35,11 @@ public class LicenseVerifyParam {
      */
     private byte[] publicKeysStoreFile;
 
-    public LicenseVerifyParam() {
+    public HeartBeatVerifyParam() {
 
     }
 
-    public LicenseVerifyParam(String subject, String publicAlias, String storePass, InputStream licenseFile, InputStream publicKeysStoreFile) {
+    public HeartBeatVerifyParam(String subject, String publicAlias, String storePass, InputStream licenseFile, InputStream publicKeysStoreFile) {
         this.subject = subject;
         this.publicAlias = publicAlias;
         this.storePass = storePass;
