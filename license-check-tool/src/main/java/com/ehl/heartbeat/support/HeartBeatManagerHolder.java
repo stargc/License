@@ -1,6 +1,5 @@
 package com.ehl.heartbeat.support;
 
-import com.ehl.heartbeat.core.CustomLicenseManager;
 import de.schlichtherle.license.LicenseManager;
 import de.schlichtherle.license.LicenseParam;
 
@@ -13,9 +12,9 @@ public class HeartBeatManagerHolder {
 
     public static LicenseManager getInstance(LicenseParam param){
         if(LICENSE_MANAGER == null){
-            synchronized (HeartBeatManagerHolder.class){
+            synchronized (CustomHeartBeatManager.class){
                 if(LICENSE_MANAGER == null){
-                    LICENSE_MANAGER = new CustomLicenseManager(param);
+                    LICENSE_MANAGER = new CustomHeartBeatManager(param);
                 }
             }
         }
